@@ -29,6 +29,18 @@ export class GildedRose {
         }
     }
 
+    updateBrieQuality(brie) {
+        if(brie.sellIn > 0) {
+            brie.sellIn --;
+            brie.quality ++;
+            
+        }  else {
+            brie.sellIn --;
+            brie.quality += 2; 
+        }
+
+    }
+
 
     updateQuality() {
         // for (let i = 0; i < this.items.length; i++) {
@@ -80,7 +92,7 @@ export class GildedRose {
         for(const i of this.items) {
             if(i.name !== 'Aged Brie' && i.name !== 'Sulfuras, Hand of Ragnaros' && i.name !== 'Backstage passes to a TAFKAL80ETC concert') {
               this.updateItemQuality(i);
-            }
+            } 
 
         }
 

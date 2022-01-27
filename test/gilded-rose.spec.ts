@@ -70,6 +70,30 @@ describe('Gilded Rose', function () {
 
     });
 
+    it('increments quality of brie by one before sell by date', function () {
+        const agedBrie: Item = new Item('Aged Brie', 5, 2);
+        const expectedItem =  [new Item('Aged Brie', 4, 3)];
+
+        const gildedRose = new GildedRose([agedBrie]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+
+    it('increments quality of brie by two after sell by date', function () {
+        const agedBrie: Item = new Item('Aged Brie', 0, 5);
+        const expectedItem =  [new Item('Aged Brie', -1, 7)];
+
+        const gildedRose = new GildedRose([agedBrie]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+
 
 });
 
