@@ -106,6 +106,55 @@ describe('Gilded Rose', function () {
 
     });
 
+    it('pass quality increases by 1 more than 10 days before concert', function () {
+        const pass: Item = new Item('Backstage passes to a TAFKAL80ETC concert', 11, 20);
+        const expectedItem =  [new Item('Backstage passes to a TAFKAL80ETC concert', 10, 21)];
+
+        const gildedRose = new GildedRose([pass]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+
+    it('pass quality increases by 2 when 10 days or less before concert', function () {
+        const pass: Item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
+        const expectedItem =  [new Item('Backstage passes to a TAFKAL80ETC concert', 9, 22)];
+
+        const gildedRose = new GildedRose([pass]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+
+    it('pass quality increases by 3 when more than 5 days or less before concert', function () {
+        const pass: Item = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20);
+        const expectedItem =  [new Item('Backstage passes to a TAFKAL80ETC concert', 4, 23)];
+
+        const gildedRose = new GildedRose([pass]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+
+    it('pass quality decreases to 0 after concert', function () {
+        const pass: Item = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
+        const expectedItem =  [new Item('Backstage passes to a TAFKAL80ETC concert', -1, 0)];
+
+        const gildedRose = new GildedRose([pass]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+    
+
 
 
 });

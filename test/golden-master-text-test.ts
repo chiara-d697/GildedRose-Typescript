@@ -24,4 +24,3 @@ console.log(gildedRose.items);
 
 
 
-// Add a master test here

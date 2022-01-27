@@ -18,7 +18,7 @@ export class GildedRose {
     }
 
     checkQualityBounds(item) {
-        if(item.quality < 50 || item.quality > 0) { return true}
+        if(item.quality < 50 && item.quality > 0) { return true}
     }
 
     updateItemQuality(item) {
