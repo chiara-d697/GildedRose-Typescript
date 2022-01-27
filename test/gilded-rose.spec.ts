@@ -94,6 +94,19 @@ describe('Gilded Rose', function () {
 
     });
 
+    it('sulfuras quality and date remain unchanged', function () {
+        const sulfuras: Item = new Item('Sulfuras, Hand of Ragnaros', 5, 80);
+        const expectedItem =  [new Item('Sulfuras, Hand of Ragnaros', 5, 80)];
+
+        const gildedRose = new GildedRose([sulfuras]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
+
+
 
 });
 
