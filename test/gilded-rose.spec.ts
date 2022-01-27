@@ -153,6 +153,18 @@ describe('Gilded Rose', function () {
         gildedRose.items.should.deep.equal(expectedItem);
 
     });
+
+    it('conjured mana cake quality decreases twice as fast as a normal item', function () {
+        const item: Item = new Item('Conjured Mana Cake', 0, 20);
+        const expectedItem =  [new Item('Conjured Mana Cake', -1, 16)];
+
+        const gildedRose = new GildedRose([item]);
+
+        gildedRose.updateQuality();
+
+        gildedRose.items.should.deep.equal(expectedItem);
+
+    });
     
 
 
